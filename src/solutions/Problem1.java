@@ -1,4 +1,4 @@
-package problems;
+package solutions;
 
 public class Problem1 {
 
