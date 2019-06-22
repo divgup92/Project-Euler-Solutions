@@ -1,4 +1,4 @@
-package solutions;
+package solutions.s1to10;
 
 public class Problem6 {
 

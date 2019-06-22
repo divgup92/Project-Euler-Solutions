@@ -1,4 +1,4 @@
-package solutions;
+package solutions.s1to10;
 
 import utils.Palindrome;
 
