@@ -18,10 +18,10 @@ public class Factors {
 	
 	public static int findSize(long number) {
 		int count = 2;
-		for(int i=2;i<number;i++) {
+		for(int i=2;i*i<number;i++) {
 			if(number%i==0)
 				count++;
 		}
-		return count;
+		return 2*count;
 	}
 }
