@@ -1,4 +1,4 @@
-package solutions.s1to10;
+package solutions.s01to10;
 
 import utils.Prime;
 
