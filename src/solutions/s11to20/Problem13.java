@@ -3,7 +3,7 @@ package solutions.s11to20;
 public class Problem13 {
 
 	public static void main(String args[]) {
-		String s[] = {"37107287533902102798797998220837590246510135740250",
+		String s[] = { "37107287533902102798797998220837590246510135740250",
 				"46376937677490009712648124896970078050417018260538",
 				"74324986199524741059474233309513058123726617309629",
 				"91942213363574161572522430563301811072406154908250",
@@ -102,25 +102,25 @@ public class Problem13 {
 				"77158542502016545090413245809786882778948721859617",
 				"72107838435069186155435662884062257473692284509516",
 				"20849603980134001723930671666823555245252804609722",
-				"53503534226472524250874054075591789781264330331690"};
-		long carry=0;
+				"53503534226472524250874054075591789781264330331690" };
+		long carry = 0;
 		String sum = "";
-		for(int i=10;i>=0;i--) {
+		for (int i = 10; i >= 0; i--) {
 			long sumi = getSumOfIthDigit(s, i, carry);
-			sum = Long.toString(sumi%10) + sum;
-			carry=sumi/10;
+			sum = Long.toString(sumi % 10) + sum;
+			carry = sumi / 10;
 		}
-		sum = Long.toString(carry)+sum;
+		sum = Long.toString(carry) + sum;
 		System.out.println(sum.substring(0, 10));
-		
+
 	}
-	
+
 	public static long getSumOfIthDigit(String s[], int digit, long carry) {
 		long sum = carry;
-		for(int i=0;i<s.length;i++) {
-			sum += s[i].charAt(digit)-'0';
+		for (int i = 0; i < s.length; i++) {
+			sum += s[i].charAt(digit) - '0';
 		}
 		return sum;
 	}
-	
+
 }
