@@ -1,7 +1,9 @@
 package utils;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public class Prime {
 
@@ -42,6 +44,38 @@ public class Prime {
 			}
 		}
 		return factors;
+	}
+
+	public static Map<Long, Long> getPrimefactorMap(Long n) {
+		Map<Long, Long> fMap = new HashMap<>();
+		long num = n;
+		while (n % 2 == 0) {
+			long value = fMap.get(2l) != null ? fMap.get(2l) + 1 : 1l;
+			fMap.put(2l, value);
+			n /= 2;
+		}
+		while (n % 3 == 0) {
+			long value = fMap.get(3l) != null ? fMap.get(3l) + 1 : 1l;
+			fMap.put(3l, value);
+			n /= 3;
+		}
+		for (long i = 6; i - 1 <= num; i += 6) {
+			if (n % (i - 1) == 0 && isPrime(i - 1)) {
+				while (n % (i - 1) == 0) {
+					long value = fMap.get(i - 1) != null ? fMap.get(i - 1) + 1 : 1l;
+					fMap.put(i - 1, value);
+					n /= (i - 1);
+				}
+			}
+			if (n % (i + 1) == 0 && isPrime(i + 1)) {
+				while (n % (i + 1) == 0) {
+					long value = fMap.get(i + 1) != null ? fMap.get(i + 1) + 1 : 1l;
+					fMap.put(i + 1, value);
+					n /= (i + 1);
+				}
+			}
+		}
+		return fMap;
 	}
 
 	public static long getNthPrime(int n) {

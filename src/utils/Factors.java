@@ -2,6 +2,7 @@ package utils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Factors {
 
@@ -23,5 +24,15 @@ public class Factors {
 				count++;
 		}
 		return 2*count;
+	}
+	
+	public static long findSum(long n) {
+		Map<Long, Long> primeFactorMap = Prime.getPrimefactorMap(n);
+		long sum = 1;
+		for(Long p: primeFactorMap.keySet()) {
+			sum *= (Math.pow(p, primeFactorMap.get(p)+1)-1)/(p-1);
+			//System.out.println(p +" "+primeFactorMap.get(p)+" "+sum+" "+(Math.pow(p, primeFactorMap.get(p)-1))+" "+(p-1));
+		}
+		return sum;
 	}
 }
