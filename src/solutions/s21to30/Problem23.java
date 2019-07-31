@@ -11,18 +11,18 @@ public class Problem23 {
 
 	private static List<Long> abundant = new ArrayList<>();
 	private static final int MAX_LIMIT = 28123;
-	
+
 	public static void main(String args[]) {
 		long sum = 0;
 		populateAbundantNumbersLessThan(MAX_LIMIT);
 		Set<Long> set = new HashSet<>();
-		for(int i=0;i<abundant.size();i++) {
-			for(int j=0;j<abundant.size();j++) {
-				set.add(abundant.get(i)+abundant.get(j));
+		for (int i = 0; i < abundant.size(); i++) {
+			for (int j = 0; j < abundant.size(); j++) {
+				set.add(abundant.get(i) + abundant.get(j));
 			}
 		}
-		for(int i=1;i<MAX_LIMIT;i++) {
-			if(!set.contains(Long.valueOf(i))) {
+		for (int i = 1; i < MAX_LIMIT; i++) {
+			if (!set.contains(Long.valueOf(i))) {
 				sum += i;
 			}
 		}
