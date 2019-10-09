@@ -1,5 +1,6 @@
 package utils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -99,5 +100,19 @@ public class Prime {
 			}
 		}
 		return val;
+	}
+	
+	public static List<Long> getPrimesLessThanNSeive(long n) {
+		List<Long> primes = new ArrayList<>();
+		for (long i = 2; i < n; i++)
+			primes.add(i);
+		int pointer = 0;
+		while (pointer < primes.size()) {
+			long a = primes.get(pointer);
+			for (long j = 2 * a; j < n; j += a)
+				primes.remove((Long) j);
+			pointer++;
+		}
+		return primes;
 	}
 }
