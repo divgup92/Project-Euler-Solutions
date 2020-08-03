@@ -36,6 +36,8 @@ public class Prime {
         for (long i = 5L; i <= n; i += 6L) {
             if (isPrime(i, primes))
                 primes.add(i);
+            if (i + 2L > n)
+                break;
             if (isPrime(i + 2L, primes))
                 primes.add(i + 2L);
         }

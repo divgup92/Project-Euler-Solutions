@@ -1,9 +1,9 @@
 package solutions.s41to50;
 
-import utils.Prime;
-
-import java.util.ArrayList;
 import java.util.List;
+
+import static utils.Prime.isPrime;
+import static utils.Permutations.getAllPermutations;
 
 /**
  * Problem 41:
@@ -23,53 +23,15 @@ public class Problem41 {
         int[] digits = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         int n = 9;
         while (true) {
-            List<Long> pList = permutations(digits, n);
+            List<Long> pList = getAllPermutations(digits, 0, n);
             long max = 0;
             for (Long p : pList) {
-                if (Prime.isPrime(p) && max < p)
+                if (isPrime(p) && max < p)
                     max = p;
             }
             if (max != 0)
                 return max;
             n--;
         }
-    }
-
-    private static List<Long> permutations(int[] array, int end) {
-        List<Long> p = new ArrayList<>();
-        int[] indexes = new int[end];
-        int[] elements = new int[end];
-        for (int i = 0; i < end; i++) {
-            indexes[i] = 0;
-            elements[i] = array[i];
-        }
-
-        p.add(formLongFromArray(elements));
-
-        int i = 0;
-        while (i < elements.length) {
-            if (indexes[i] < i) {
-                swap(elements, i % 2 == 0 ? 0 : indexes[i], i);
-                p.add(formLongFromArray(elements));
-                indexes[i]++;
-                i = 0;
-            } else {
-                indexes[i++] = 0;
-            }
-        }
-        return p;
-    }
-
-    private static void swap(int[] input, int a, int b) {
-        int tmp = input[a];
-        input[a] = input[b];
-        input[b] = tmp;
-    }
-
-    private static Long formLongFromArray(int[] array) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < array.length; i++)
-            sb.append(array[i]);
-        return Long.valueOf(sb.toString());
     }
 }
